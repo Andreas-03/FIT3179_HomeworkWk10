@@ -35,7 +35,7 @@
         },
         "tooltip": [
         {"field": "properties.name", "type": "nominal", "title":"State"},
-        {"field": "Drug Addicts per 1000 people", "type": "quantitative"}
+        {"field": "Drug Addicts per 1000 people", "type": "quantitative", "format": ".2f"}
         ]
     }
 }

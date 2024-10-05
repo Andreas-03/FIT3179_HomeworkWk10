@@ -43,7 +43,7 @@
             "tooltip": [
                 {"field": "State", "type": "nominal"},
                 {"field": "Year", "type": "ordinal"},
-                {"field": "Value", "type": "quantitative", "title": "Drug Addicts"} 
+                {"field": "Value", "type": "quantitative", "format": ",", "title": "Drug Addicts"} 
                 ]
             }
         },
@@ -57,17 +57,19 @@
             "fontWeight": "normal",
             "lineBreak": "\n"
             },
+        "transform": [
+            {"filter": "datum.Year == 2016 && datum.State == 'Pulau Pinang'"}
+            ],
         "encoding": {
             "x": {"field": "Year"},
             "y": {"field": "Value", "type": "quantitative"},
             "text": {"value": "Highest number of drug addicts\nacross all states\nbetween 2010 and 2021"},
             "color": {"value": "black"},
-            "opacity": {
-                "condition": {
-                    "test": "datum.Year == 2016 && datum.State == 'Pulau Pinang'", "value": 1
-                    },
-                     "value": 0
-                }
+            "tooltip": [
+            {"field": "State", "type": "nominal"},
+            {"field": "Year", "type": "ordinal"},
+            {"field": "Value", "type": "quantitative", "format": ",", "title": "Drug Addicts"} 
+                ]
             }
         }
     ]
