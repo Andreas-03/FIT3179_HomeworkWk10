@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Drug Addicts by State from 2010 to 2021",
+    "data": {"url": "drug_addicts_by_state_my.csv"},
+    "width": 600,
+    "height": 300,
+    "transform": [
+      {"filter": "State_selection == null || datum.State == State_selection"}
+    ],
+    "params": [
+    {
+        "name": "State_selection", 
+        "bind": {
+            "input": "select",
+            "options": [
+                null, "Johor", "Kedah", "Kelantan", "Melaka",
+                "Negeri Sembilan", "Pahang", "Perak",
+                "Perlis", "Pulau Pinang", "Sabah",
+                "Sarawak", "Selangor", "Terengganu",
+                "Kuala Lumpur", "Labuan", "Putrajaya"
+            ],
+            "labels": [
+                "Show All","Johor", "Kedah", "Kelantan", "Melaka",
+                "Negeri Sembilan", "Pahang", "Perak",
+                "Perlis", "Pulau Pinang", "Sabah",
+                "Sarawak", "Selangor", "Terengganu",
+                "Kuala Lumpur", "Labuan", "Putrajaya"
+                ],
+            "name": "State Selection: "
+            }
+        }
+    ],
+    "layer":[
+        {
+        "mark": {
+            "type": "line",
+            "point": true
+            },
+        "encoding": {
+            "x": {"field": "Year"},
+            "y": {"field": "Value", "type": "quantitative"},
+            "color": {"field": "State", "type": "nominal", "scale": {"scheme": "tableau20"}},
+            "tooltip": [
+                {"field": "State", "type": "nominal"},
+                {"field": "Year", "type": "ordinal"},
+                {"field": "Value", "type": "quantitative", "title": "Drug Addicts"} 
+                ]
+            }
+        },
+        {
+        "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -25,
+            "fontSize": 10,
+            "fontWeight": "normal",
+            "lineBreak": "\n"
+            },
+        "encoding": {
+            "x": {"field": "Year"},
+            "y": {"field": "Value", "type": "quantitative"},
+            "text": {"value": "Highest number of drug addicts\nacross all states\nbetween 2010 and 2021"},
+            "color": {"value": "black"},
+            "opacity": {
+                "condition": {
+                    "test": "datum.Year == 2016 && datum.State == 'Pulau Pinang'", "value": 1
+                    },
+                     "value": 0
+                }
+            }
+        }
+    ]
+}
+  
